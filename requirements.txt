@@ -1,0 +1,5 @@
+opencv-python
+matplotlib
+libgl1-mesa-glx
+scikit-image
+pandas
