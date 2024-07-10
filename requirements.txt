@@ -7,3 +7,8 @@ pyautogen
 replicate
 requests
 openai
+torch 
+tensorflow 
+pytesseract 
+transformers
+yolov5
