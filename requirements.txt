@@ -3,3 +3,7 @@ matplotlib
 libgl1-mesa-glx
 scikit-image
 pandas
+pyautogen
+replicate
+requests
+openai
