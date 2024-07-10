@@ -109,16 +109,6 @@ python src/text_analysis.py
 python src/storyboard_composition.py
 ```
 
-## Learning Outcomes
-
-By completing this project, you will gain skills in:
-
-- Working with deep learning frameworks (PyTorch, TensorFlow)
-- Optimizing image segmentation models
-- Using computer vision models and APIs
-- ML modeling with KPIs and DL artifacts
-- Formulating and designing test and training strategies
-- MLOps with DVC, CML, and MLFlow
 
 ## Resources
 
