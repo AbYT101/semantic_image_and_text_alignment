@@ -12,3 +12,6 @@ tensorflow
 pytesseract 
 transformers
 yolov5
+scikit-learn
+python-dotenv
+diffusers

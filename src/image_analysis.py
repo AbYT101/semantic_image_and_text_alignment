@@ -4,35 +4,66 @@ import pytesseract
 import cv2
 import numpy as np
 import torch
+from sklearn.cluster import KMeans
+from collections import Counter
+
 
 class ImageAnalysisAgent(Agent):
     def __init__(self):
         super().__init__()
-        self.model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+        self.model = torch.hub.load('ultralytics/yolov5', 'yolov5x')  # Upgraded model
+
     def object_identification(self, image: Image.Image):
-        # Use a pre-trained YOLO model for object detection
-        # Convert PIL image to numpy array
         img_np = np.array(image)
-        # Perform object detection
         results = self.model(img_np)
-        # Extract detection results
         objects = results.pandas().xyxy[0].to_dict(orient="records")
         return objects
 
-    def color_identification(self, image: Image.Image):
+    def color_identification(self, image: Image.Image, num_colors: int = 5):
         image = np.array(image)
-        avg_color_per_row = np.average(image, axis=0)
-        avg_color = np.average(avg_color_per_row, axis=0)
-        return avg_color
+
+        # Ensure the image has three color channels
+        if len(image.shape) == 2 or image.shape[2] == 1:  # Grayscale image
+            image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
+        elif image.shape[2] == 4:  # Image with alpha channel
+            image = cv2.cvtColor(image, cv2.COLOR_RGBA2RGB)
+
+        # Flatten the image to shape (num_pixels, 3)
+        image = image.reshape((image.shape[0] * image.shape[1], 3))
+
+        # Use KMeans to find the dominant colors
+        clt = KMeans(n_clusters=num_colors)
+        clt.fit(image)
+
+        # Get the colors and their frequency
+        hist = self._centroid_histogram(clt)
+        colors = clt.cluster_centers_
+
+        # Convert to a list of RGB tuples
+        color_info = []
+        for (percent, color) in zip(hist, colors):
+            color_info.append({
+                'color': color.astype(int).tolist(),
+                'percentage': percent
+            })
+
+        return color_info
+
+    def _centroid_histogram(self, clt):
+        # Create a histogram based on the number of pixels assigned to each cluster
+        num_labels = np.arange(0, len(np.unique(clt.labels_)) + 1)
+        (hist, _) = np.histogram(clt.labels_, bins=num_labels)
+
+        # Normalize the histogram, so that it sums to one
+        hist = hist.astype("float")
+        hist /= hist.sum()
+
+        return hist
 
     def position_extraction(self, image: Image.Image):
-        # Convert PIL image to numpy array
         img_np = np.array(image)
-        # Perform object detection
         results = self.model(img_np)
-        # Extract bounding boxes
         bboxes = results.xyxy[0].numpy()
-        # Extract positions
         positions = []
         for bbox in bboxes:
             x_min, y_min, x_max, y_max, confidence, class_id = bbox[:6]
