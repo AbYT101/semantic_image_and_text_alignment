@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { composeImage } from '../services/composeService';
-import { toast } from 'react-toastify';
+import React, { useState } from "react";
+import { composeImage } from "../services/composeService";
+import { toast } from "react-toastify";
 
 const BuildStoryboard = () => {
   const [logo, setLogo] = useState(null);
@@ -8,7 +8,7 @@ const BuildStoryboard = () => {
   const [background, setBackground] = useState(null);
   const [cta, setCta] = useState(null);
   const [result, setResult] = useState(null);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
 
   const handleFileChange = (e, setter) => {
     setter(e.target.files[0]);
@@ -22,10 +22,14 @@ const BuildStoryboard = () => {
 
   return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Build Storyboard</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">
+        Build Storyboard
+      </h2>
       <form className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Logo</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Logo
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setLogo)}
@@ -33,7 +37,9 @@ const BuildStoryboard = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Main Character</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Main Character
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setMainCharacter)}
@@ -41,7 +47,9 @@ const BuildStoryboard = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Background</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Background
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setBackground)}
@@ -49,7 +57,9 @@ const BuildStoryboard = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload CTA</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload CTA
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setCta)}
@@ -57,7 +67,9 @@ const BuildStoryboard = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Description</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
           <textarea
             type="textArea"
             value={description}

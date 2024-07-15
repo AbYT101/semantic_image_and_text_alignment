@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { composeImage } from '../services/composeService';
-import { toast } from 'react-hot-toast';
+import React, { useState } from "react";
+import { composeImage } from "../services/composeService";
+import { toast } from "react-hot-toast";
 
 const ComposeImage = () => {
   const [logo, setLogo] = useState(null);
@@ -17,7 +17,7 @@ const ComposeImage = () => {
   const handleCompose = async () => {
     // Validate all files are selected
     if (!logo || !mainCharacter || !background || !cta) {
-      toast.error('Please upload all files.');
+      toast.error("Please upload all files.");
       return;
     }
 
@@ -25,9 +25,9 @@ const ComposeImage = () => {
     try {
       const imageResults = await composeImage(files, descriptions);
       setResult(imageResults);
-      toast.success('Images composed successfully!');
+      toast.success("Images composed successfully!");
     } catch (error) {
-      console.error('Error composing images:', error);
+      console.error("Error composing images:", error);
     }
   };
 
@@ -36,7 +36,9 @@ const ComposeImage = () => {
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Compose Image</h2>
       <form className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Logo</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Logo
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setLogo)}
@@ -44,7 +46,9 @@ const ComposeImage = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Main Character</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Main Character
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setMainCharacter)}
@@ -52,7 +56,9 @@ const ComposeImage = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload Background</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload Background
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setBackground)}
@@ -60,7 +66,9 @@ const ComposeImage = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Upload CTA</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Upload CTA
+          </label>
           <input
             type="file"
             onChange={(e) => handleFileChange(e, setCta)}
@@ -68,7 +76,9 @@ const ComposeImage = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Description</label>
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
           <textarea
             value={descriptions}
             onChange={(e) => setDescriptions(e.target.value)}
