@@ -68,7 +68,7 @@ const BuildStoryboard = () => {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Description
+           Concept
           </label>
           <textarea
             type="textArea"

@@ -2,7 +2,7 @@ from autogen import Agent
 from PIL import Image
 import numpy as np
 import os
-from image_analysis import image_agent
+# from image_analysis import image_agent
 from text_analysis import text_agent
 from openai_image_analysis import openai_image_agent
 from openai import OpenAI
@@ -61,7 +61,7 @@ class CriticGradingAgent(Agent):
 
         # Use GPT-4 model to evaluate and generate a response
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are an expert in design and advertisement analysis."},
                 {"role": "user", "content": prompt}

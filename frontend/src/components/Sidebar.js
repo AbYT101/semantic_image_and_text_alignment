@@ -5,7 +5,7 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-64 h-screen bg-gray-800 text-white">
+    <div className="w-64 h-full bg-gray-800 text-white">
       <h2 className="text-2xl p-4"></h2>
       <nav>
         <ul>
