@@ -61,7 +61,7 @@ class CriticGradingAgent(Agent):
 
         # Use GPT-4 model to evaluate and generate a response
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You are an expert in design and advertisement analysis."},
                 {"role": "user", "content": prompt}

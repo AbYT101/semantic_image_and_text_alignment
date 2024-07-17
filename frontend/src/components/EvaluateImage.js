@@ -128,6 +128,10 @@ const EvaluateImage = () => {
                           <h3 className="font-medium text-gray-700 mb-2">
                             {line.replace('### ', '')}
                           </h3>
+                        ) : line.startsWith('#### ') ? (
+                          <h2 className="font-semibold text-gray-800 mb-2">
+                            {line.replace('## ', '')}
+                          </h2>
                         ) : line.startsWith('## ') ? (
                           <h2 className="font-semibold text-gray-800 mb-2">
                             {line.replace('## ', '')}
