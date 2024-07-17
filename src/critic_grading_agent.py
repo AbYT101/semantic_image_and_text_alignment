@@ -2,7 +2,7 @@ from autogen import Agent
 from PIL import Image
 import numpy as np
 import os
-from image_analysis import image_agent
+# from image_analysis import image_agent
 from text_analysis import text_agent
 from openai_image_analysis import openai_image_agent
 from openai import OpenAI

@@ -2,9 +2,10 @@ import axios from 'axios';
 import { from, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-export const evaluateImage = (file, description) => {
+export const evaluateImage = (file, imageAnalyzer, description) => {
   const formData = new FormData();
   formData.append('file', file);
+  formData.append('imageAnalyzer', imageAnalyzer)
   formData.append('description', description);
 
   return from(

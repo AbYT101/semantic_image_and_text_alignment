@@ -1,20 +1,20 @@
-from transformers import pipeline
+# from transformers import pipeline
 from autogen import Agent
 
 class TextAnalysisAgent(Agent):
     def __init__(self):
         super().__init__()
-        self.summarizer = pipeline("summarization")
-        self.ner = pipeline("ner")
-        self.text_generator = pipeline("text-generation")
+        # self.summarizer = pipeline("summarization")
+        # self.ner = pipeline("ner")
+        # self.text_generator = pipeline("text-generation")
 
     def text_summarization(self, text: str):
-        summary = self.summarizer(text, max_length=50, min_length=25, do_sample=False)
-        return summary[0]['summary_text']
+        # summary = self.summarizer(text, max_length=50, min_length=25, do_sample=False)
+        return ""
 
     def key_phrase_identification(self, text: str):
-        entities = self.ner(text)
-        return [entity['word'] for entity in entities]
+        # entities = self.ner(text)
+        return ""
 
     def narrative_understanding(self, text: str):
         # Placeholder for narrative understanding implementation

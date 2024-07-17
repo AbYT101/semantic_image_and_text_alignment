@@ -5,17 +5,19 @@ import { toast } from 'react-hot-toast';
 
 export const composeImage = (files, description) => {
   const formData = new FormData();
-  files.forEach(file => {
-    formData.append(file.name, file);
-  });
+  formData.append('logo', files.logo);
+  formData.append('main_character', files.mainCharacter);
+  formData.append('background', files.background);
+  formData.append('cta', files.cta);
   formData.append('description', description);
 
   const response$ = from(
     axios.post('http://localhost:5000/compose', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => response.data.image)
+      },
+      responseType: "blob",
+    }).then(response => response)
   );
 
   return response$.pipe(
